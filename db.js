@@ -9,7 +9,6 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
-  charset: 'utf8mb4',
 });
 
 // ทดสอบการเชื่อมต่อ

@@ -1,17 +1,18 @@
 const express = require('express');
-const cors = require('cors'); // นำเข้า CORS
+const cors = require('cors');
 const userRoutes = require('./api/user');
 const loginRoutes = require('./api/login');
 const dataRoutes = require('./api/data');
-const app = express();  
+const app = express();
 
 // ใช้ CORS Middleware
 app.use(cors({
-  origin: ['http://localhost:5174', 'http://localhost:5173'], // Allow both origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP Methods
-  credentials: true, // Allow cookies or other credentials
+  origin: ['http://localhost:5174', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
 }));
 
+// Middleware สำหรับจัดการข้อผิดพลาด JSON
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
     console.error('JSON Parse Error:', err.message);
@@ -19,8 +20,8 @@ app.use((err, req, res, next) => {
   }
   next(err);
 });
-app.use(express.json());
 
+app.use(express.json());
 app.use('/uploads', express.static('public/uploads'));
 app.use('/api/users', userRoutes);
 app.use('/api/login', loginRoutes);
