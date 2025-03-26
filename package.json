@@ -6,7 +6,7 @@
 
     "dev": "nodemon api.js",
 
-      "build": "node ./node_modules/.bin/tsc -b"
+    "build": "npx tsc -b"
 
   },
 
