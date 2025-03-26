@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const db = require('../db'); // เชื่อมต่อกับฐานข้อมูล
 const router = express.Router();
 
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10); // เข้ารหัสรหัสผ่าน
+    const hashedPassword = await bcryptjs.hash(password, 10); // เข้ารหัสรหัสผ่าน
     const query = 'INSERT INTO user (username, password, role) VALUES (?, ?, ?)';
     const values = [username, hashedPassword, role || 'member'];
 
@@ -71,7 +71,7 @@ router.put('/:id', async (req, res) => {
       values.push(username);
     }
     if (password) {
-      const hashedPassword = await bcrypt.hash(password, 10); // เข้ารหัสรหัสผ่านใหม่
+      const hashedPassword = await bcryptjs.hash(password, 10); // เข้ารหัสรหัสผ่านใหม่
       query += 'password = ?, ';
       values.push(hashedPassword);
     }

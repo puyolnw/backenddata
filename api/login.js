@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken'); // เพิ่ม jsonwebtoken
 const db = require('../db'); // เชื่อมต่อกับฐานข้อมูล
 const router = express.Router();
@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 
     try {
       // ตรวจสอบรหัสผ่านด้วย bcrypt
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+      const isPasswordValid = await bcryptjs.compare(password, user.password);
       if (!isPasswordValid) {
         return res.status(401).json({ error: 'Invalid username or password' });
       }
