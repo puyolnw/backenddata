@@ -6,8 +6,8 @@
 
     "dev": "nodemon api.js",
 
-    "build": "echo 'No build required'"
-
+    "build": "echo 'No build required'",
+     "postinstall": "npm rebuild bcrypt --build-from-source"
   },
 
   "dependencies": {
