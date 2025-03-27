@@ -16,7 +16,7 @@ const generateDocumentId = async () => {
     const [dailyCountResult] = await conn.query('SELECT COUNT(*) as count FROM data WHERE DATE(created_at) = CURDATE()');
     const dailyNo = (dailyCountResult[0].count + 1).toString().padStart(3, '0');
     
-    return `อว.${nextNo}-${datePart}${dailyNo}`;
+    return `อว.8-${datePart}${dailyNo}`;
   } catch (err) {
     console.error('Error generating document ID:', err);
     throw err;
