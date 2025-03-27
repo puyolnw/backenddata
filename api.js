@@ -5,21 +5,8 @@ const loginRoutes = require('./api/login');
 const dataRoutes = require('./api/data');
 const app = express();
 
-// ใช้ CORS Middleware
-app.use(cors({
-  origin: ['*'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
-
-// Middleware สำหรับจัดการข้อผิดพลาด JSON
-app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
-    console.error('JSON Parse Error:', err.message);
-    return res.status(400).json({ error: 'Invalid JSON format' });
-  }
-  next(err);
-});
+// เปิด CORS ให้ทุกที่เข้าถึงได้
+app.use(cors());
 
 app.use(express.json());
 app.use('/uploads', express.static('public/uploads'));
