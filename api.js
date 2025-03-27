@@ -7,10 +7,9 @@ const app = express();
 
 // ใช้ CORS Middleware
 app.use(cors({
-  origin: '*',  // เปิดให้ทุกที่เข้าถึงได้
+  origin: ['*'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // ถ้า frontend มีการส่ง cookie หรือ token ต้องเปิดอันนี้
+  credentials: true,
 }));
 
 // Middleware สำหรับจัดการข้อผิดพลาด JSON
