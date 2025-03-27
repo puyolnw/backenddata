@@ -1,11 +1,8 @@
 {
 
   "scripts": {
-
     "start": "node api.js",
-
     "dev": "nodemon api.js",
-
     "build": "echo 'No build required'"
 
   },
