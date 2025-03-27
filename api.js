@@ -6,11 +6,8 @@ const dataRoutes = require('./api/data');
 const app = express();
 
 // ใช้ CORS Middleware
-app.use(cors({
-  origin: ['https://snake-production-6a45.up.railway.app/', 'https://snake-production-6a45.up.railway.app','https://data-six-lemon.vercel.app'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
+const cors = require('cors');
+app.use(cors());
 
 // Middleware สำหรับจัดการข้อผิดพลาด JSON
 app.use((err, req, res, next) => {
