@@ -7,7 +7,7 @@ const app = express();
 
 // ใช้ CORS Middleware
 app.use(cors({
-  origin: ['https://datanow-production.up.railway.app', 'https://snake-production-6a45.up.railway.app','https://data-six-lemon.vercel.app'],
+  origin: ['https://snake-production-6a45.up.railway.app/', 'https://snake-production-6a45.up.railway.app','https://data-six-lemon.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
