@@ -43,14 +43,19 @@ router.post('/', async (req, res) => {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
 
-    // สร้าง JWT token
+    // สร้าง JWT token - เพิ่ม branchid ใน payload
     const token = jwt.sign(
-      { id: user.user_id, username: user.username, role: user.role },
+      { 
+        id: user.user_id, 
+        username: user.username, 
+        role: user.role,
+        branchid: user.branchid 
+      },
       JWT_SECRET,
       { expiresIn: '1h' }
     );
 
-    // ส่งข้อมูลผู้ใช้และ token กลับ
+    // ส่งข้อมูลผู้ใช้และ token กลับ - เพิ่ม branchid ในข้อมูลที่ส่งกลับ
     res.json({
       message: 'Login successful',
       token,
@@ -58,6 +63,7 @@ router.post('/', async (req, res) => {
         id: user.user_id,
         username: user.username,
         role: user.role,
+        branchid: user.branchid
       },
     });
   } catch (err) {
