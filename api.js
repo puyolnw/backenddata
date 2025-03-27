@@ -6,8 +6,12 @@ const dataRoutes = require('./api/data');
 const app = express();
 
 // ใช้ CORS Middleware
-const cors = require('cors');
-app.use(cors());
+app.use(cors({
+  origin: '*',  // เปิดให้ทุกที่เข้าถึงได้
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // ถ้า frontend มีการส่ง cookie หรือ token ต้องเปิดอันนี้
+}));
 
 // Middleware สำหรับจัดการข้อผิดพลาด JSON
 app.use((err, req, res, next) => {
